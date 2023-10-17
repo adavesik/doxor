@@ -1,7 +1,7 @@
 const fs   = require('fs');
 
-const fileOnePath = 'PMRS.txt';
-const fileSecondPath = 'Base MRS.txt';
+const fileOnePath    = 'file1.txt';
+const fileSecondPath = 'file2.txt';
 const resultFilePath = 'xored.txt';
 
 async function process(fileOnePath, fileSecondPath, resultFilePath) {
@@ -35,6 +35,7 @@ async function process(fileOnePath, fileSecondPath, resultFilePath) {
             let result = '';
             const processingLen = Math.min(buffer1.length, buffer2.length);
 
+            // Already read data will be XOR-ed. No need to wait until end of file reading
             for (let i = 0; i < processingLen; i++) {
                 result += (buffer1[i] - '0') ^ (buffer2[i] - '0');
             }
